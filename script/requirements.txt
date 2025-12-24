@@ -1,6 +1,0 @@
-git+https://github.com/Azelphur/pyPushBullet.git
-urllib3==1.22
-twitter==1.18.0
-beautifulsoup4==4.6.0
-requests==2.18.4
-pytrends==4.3.0

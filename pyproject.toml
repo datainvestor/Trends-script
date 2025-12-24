@@ -1,0 +1,11 @@
+[project]
+name = "trends-script"
+version = "0.1.0"
+description = "Daily trends notification script"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests",
+    "beautifulsoup4",
+    "pytrends",
+]

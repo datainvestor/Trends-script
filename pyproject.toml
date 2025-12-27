@@ -8,4 +8,5 @@ dependencies = [
     "requests",
     "beautifulsoup4",
     "pytrends",
+    "python-dotenv>=1.2.1",
 ]

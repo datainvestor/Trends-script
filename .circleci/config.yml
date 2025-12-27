@@ -27,3 +27,7 @@ workflows:
             branches:
               only:
                 - main
+
+  commit-workflow:
+    jobs:
+      - run-trends

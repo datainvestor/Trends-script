@@ -1,0 +1,29 @@
+version: 2.1
+
+jobs:
+  run-trends:
+    docker:
+      - image: cimg/python:3.12
+    steps:
+      - checkout
+      - run:
+          name: Install uv
+          command: pip install uv
+      - run:
+          name: Install dependencies
+          command: uv sync --frozen
+      - run:
+          name: Run script
+          command: uv run script/trends.py
+
+workflows:
+  daily-trends:
+    jobs:
+      - run-trends
+    triggers:
+      - schedule:
+          cron: "0 6,18 * * *"
+          filters:
+            branches:
+              only:
+                - main

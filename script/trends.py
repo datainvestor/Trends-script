@@ -52,14 +52,10 @@ def get_yahoo_trends():
         headers = {'User-Agent': 'Mozilla/5.0'}
         page = requests.get("https://finance.yahoo.com/trending-tickers/", headers=headers)
         soup = BeautifulSoup(page.content, 'html.parser')
-        base = soup.find_all('td', {'class': 'data-col1'}) 
-        if not base:
-             base = soup.select('td[aria-label="Symbol"]')
+        # New selector found via inspection
+        base = soup.select('a[data-testid="table-cell-ticker"]')
         
-        yhoo = []
-        for i in base:
-            yhoo.append(i.get_text())
-        return " ,".join(str(x) for x in yhoo[0:15])
+        return " ,".join(x.get_text(strip=True) for x in base[0:15])
     except Exception as e:
         logging.error(f"Error fetching Yahoo Trends: {e}")
         return "N/A"

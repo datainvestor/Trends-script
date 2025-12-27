@@ -18,16 +18,12 @@ jobs:
       uses: astral-sh/setup-uv@v4
       with:
         version: "latest"
-
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
+        enable-cache: true
 
     - name: Install dependencies
       run: |
-        uv pip install -r requirements.txt
+        uv sync --frozen
 
     - name: Run script
       run: |
-        python script/trends.py
+        uv run script/trends.py
